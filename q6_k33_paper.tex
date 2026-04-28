@@ -1,0 +1,202 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{longtable}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\Q}{Q_6}
+\newcommand{\F}{\mathcal F}
+\newcommand{\M}{\mathcal M}
+
+\title{The missing \(K_{3,3}\) case for semi-perfect 1-factorizations of the hypercube}
+\author{Zhu Mindong\\
+Institute of Marxism, Postdoctoral Research Station of Sociology\\
+East China University of Science and Technology\\
+130 Meilong Road, Shanghai 200237, China\\
+\texttt{13788998119@163.com}}
+\date{April 28, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Behague proved that for all positive integers \(k,l\), except for the possible
+exception \((k,l)=(3,3)\), there is a 1-factorization \(\M\) of \(Q_{k+l}\)
+whose auxiliary graph \(G[\M]\) is isomorphic to \(K_{k,l}\).  We give an
+explicit 1-factorization of \(Q_6\) for which \(G[\M]\cong K_{3,3}\), thereby
+settling the remaining case.  The construction is supplied as a compact table;
+the verification reduces to checking that six listed color classes are perfect
+matchings and that the pairwise cycle lengths have the prescribed form.
+\end{abstract}
+
+\section{Introduction}
+
+Let \(Q_d\) be the \(d\)-dimensional hypercube.  A 1-factorization of \(Q_d\)
+is a partition of \(E(Q_d)\) into \(d\) perfect matchings.  Following Behague
+\cite{behague}, if
+\[
+  \M=\{M_1,\dots,M_d\}
+\]
+is a 1-factorization, define \(G[\M]\) to be the graph with vertex set
+\(\M\), where \(M_iM_j\) is an edge exactly when \(M_i\cup M_j\) is a
+Hamilton cycle of \(Q_d\).
+
+Behague proved that for all positive integers \(k,l\), not both equal to \(3\),
+there is a 1-factorization \(\M\) of \(Q_{k+l}\) with
+\(G[\M]\cong K_{k,l}\), and asked whether the remaining case \(K_{3,3}\) occurs
+\cite[Open Problem 8]{behague}.  The construction below answers this question.
+
+\section{The construction}
+
+Identify the vertices of \(\Q\) with the integers \(0,\dots,63\), or
+equivalently with the binary vectors in \(\mathbb F_2^6\).  Direction \(d\)
+means flipping bit \(d\), so the edge in direction \(d\) from \(v\) joins
+\(v\) to \(v\oplus 2^d\).  Every edge has exactly one endpoint of even parity.
+
+Table~\ref{tab:coloring} gives an edge-coloring of \(\Q\).  For an even vertex
+\(v\), the entry in column \(d\) is the color of the edge
+\(\{v,v\oplus 2^d\}\).  Let \(M_i\) be the set of edges of color \(i\).
+
+\begin{longtable}{rrrrrrrr}
+\caption{The color of the edge in each direction from each even vertex.}
+\label{tab:coloring}\\
+\toprule
+\(v\) & binary & dir 0 & dir 1 & dir 2 & dir 3 & dir 4 & dir 5 \\
+\midrule
+\endfirsthead
+\toprule
+\(v\) & binary & dir 0 & dir 1 & dir 2 & dir 3 & dir 4 & dir 5 \\
+\midrule
+\endhead
+0  & 000000 & 4 & 5 & 0 & 1 & 3 & 2 \\
+3  & 000011 & 1 & 0 & 3 & 2 & 4 & 5 \\
+5  & 000101 & 2 & 0 & 1 & 5 & 4 & 3 \\
+6  & 000110 & 2 & 3 & 4 & 1 & 0 & 5 \\
+9  & 001001 & 2 & 4 & 0 & 5 & 1 & 3 \\
+10 & 001010 & 3 & 4 & 5 & 2 & 1 & 0 \\
+12 & 001100 & 3 & 4 & 0 & 5 & 2 & 1 \\
+15 & 001111 & 3 & 2 & 0 & 4 & 1 & 5 \\
+17 & 010001 & 2 & 0 & 1 & 5 & 3 & 4 \\
+18 & 010010 & 3 & 1 & 2 & 4 & 0 & 5 \\
+20 & 010100 & 2 & 5 & 0 & 1 & 4 & 3 \\
+23 & 010111 & 4 & 3 & 5 & 2 & 1 & 0 \\
+24 & 011000 & 2 & 0 & 5 & 4 & 3 & 1 \\
+27 & 011011 & 3 & 0 & 4 & 1 & 5 & 2 \\
+29 & 011101 & 4 & 5 & 3 & 0 & 1 & 2 \\
+30 & 011110 & 0 & 3 & 5 & 1 & 2 & 4 \\
+33 & 100001 & 0 & 1 & 5 & 4 & 3 & 2 \\
+34 & 100010 & 0 & 5 & 2 & 1 & 4 & 3 \\
+36 & 100100 & 4 & 0 & 3 & 2 & 5 & 1 \\
+39 & 100111 & 1 & 0 & 2 & 3 & 4 & 5 \\
+40 & 101000 & 1 & 3 & 0 & 4 & 2 & 5 \\
+43 & 101011 & 4 & 0 & 2 & 3 & 5 & 1 \\
+45 & 101101 & 3 & 1 & 5 & 2 & 0 & 4 \\
+46 & 101110 & 4 & 5 & 2 & 3 & 1 & 0 \\
+48 & 110000 & 0 & 2 & 4 & 3 & 1 & 5 \\
+51 & 110011 & 3 & 5 & 1 & 0 & 4 & 2 \\
+53 & 110101 & 0 & 3 & 2 & 4 & 1 & 5 \\
+54 & 110110 & 5 & 2 & 1 & 0 & 4 & 3 \\
+57 & 111001 & 0 & 3 & 5 & 1 & 2 & 4 \\
+58 & 111010 & 1 & 4 & 3 & 0 & 5 & 2 \\
+60 & 111100 & 3 & 2 & 5 & 1 & 4 & 0 \\
+63 & 111111 & 5 & 1 & 4 & 2 & 0 & 3 \\
+\bottomrule
+\end{longtable}
+
+\begin{theorem}
+The color classes \(M_0,\dots,M_5\) defined by Table~\ref{tab:coloring} form
+a 1-factorization of \(Q_6\).  Moreover,
+\[
+  G[\M]\cong K_{3,3},
+\]
+with bipartition \(\{M_0,M_1,M_5\}\cup\{M_2,M_3,M_4\}\).
+\end{theorem}
+
+\begin{proof}
+Each row of Table~\ref{tab:coloring} is a permutation of
+\(\{0,1,2,3,4,5\}\), so each even vertex is incident with exactly one edge of
+each color.  A direct check of the table also shows that each odd vertex is
+incident with exactly one edge of each color.  Hence each \(M_i\) is a perfect
+matching, and the six \(M_i\)'s partition the edge set of \(Q_6\).
+
+For each unordered pair \(\{i,j\}\), the graph \(M_i\cup M_j\) is 2-regular
+on all 64 vertices, so it is a disjoint union of cycles.  The cycle lengths are
+as follows:
+\[
+\begin{array}{c|l}
+01 & 40,12,8,4\\
+02 & 64\\
+03 & 64\\
+04 & 64\\
+05 & 26,14,12,12\\
+12 & 64\\
+13 & 64\\
+14 & 64\\
+15 & 42,22\\
+23 & 40,14,6,4\\
+24 & 50,6,4,4\\
+25 & 64\\
+34 & 52,12\\
+35 & 64\\
+45 & 64
+\end{array}
+\]
+Thus \(M_i\cup M_j\) is Hamiltonian exactly for the nine pairs
+\[
+  \{0,2\},\{0,3\},\{0,4\},
+  \{1,2\},\{1,3\},\{1,4\},
+  \{5,2\},\{5,3\},\{5,4\}.
+\]
+These are precisely the edges of the complete bipartite graph with parts
+\(\{0,1,5\}\) and \(\{2,3,4\}\).  Therefore \(G[\M]\cong K_{3,3}\).
+\end{proof}
+
+\begin{corollary}
+For all positive integers \(k,l\), there is a 1-factorization \(\M\) of
+\(Q_{k+l}\) such that \(G[\M]\cong K_{k,l}\).
+\end{corollary}
+
+\begin{proof}
+Behague proved this for all \((k,l)\ne(3,3)\) \cite[Theorem 2]{behague}.  The
+theorem above supplies the remaining case.
+\end{proof}
+
+\section*{Verification files}
+
+The table above is self-contained.  For independent checking, the accompanying
+files are:
+\[
+\texttt{q6\_k33\_solution.json},\qquad
+\texttt{verify\_q6\_k33.py},\qquad
+\texttt{q6\_k33\_selfcheck.py}.
+\]
+The first lists the six matchings explicitly as edge sets.  The second checks
+that the JSON file is a 1-factorization and computes all pairwise cycle
+lengths.  The third hard-codes Table~\ref{tab:coloring} and performs the same
+check without reading any external certificate file.
+
+\section*{Declaration of AI use}
+
+OpenAI Codex/ChatGPT was used to assist with computational search, generation
+of verification scripts, and drafting/editing of the manuscript.  The author
+checked the construction and verification output and takes full responsibility
+for the content of the paper.  This statement should be adjusted to match the
+target journal's required disclosure format.
+
+\begin{thebibliography}{9}
+
+\bibitem{behague}
+Natalie C. Behague,
+\newblock Semi-perfect 1-factorizations of the hypercube,
+\newblock \emph{Discrete Mathematics} 342(6) (2019), 1696--1702.
+\newblock \href{https://doi.org/10.1016/j.disc.2019.01.035}{doi:10.1016/j.disc.2019.01.035};
+\href{https://arxiv.org/abs/1811.06389}{arXiv:1811.06389}.
+
+\end{thebibliography}
+
+\end{document}
