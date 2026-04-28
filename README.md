@@ -6,12 +6,10 @@ The construction resolves the remaining `(k,l)=(3,3)` case from Natalie C. Behag
 
 ## Main Files
 
-- `q6_k33_discrete_math.tex`: Elsevier/Discrete Mathematics submission draft.
-- `q6_k33_paper.tex`: generic LaTeX short-paper draft.
+- `q6_k33_paper.tex`: LaTeX short-paper draft.
 - `q6_k33_solution.json`: machine-readable certificate listing the six matchings as edge sets.
 - `verify_q6_k33.py`: verifier for the JSON certificate.
 - `q6_k33_selfcheck.py`: self-contained verifier with the compact certificate table hard-coded.
-- `q6_k33_note.md`: readable construction note and verification summary.
 
 ## Verification
 
