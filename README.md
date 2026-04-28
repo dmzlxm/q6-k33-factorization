@@ -4,6 +4,8 @@ This repository contains a constructive certificate for a 1-factorization of the
 
 The construction resolves the remaining `(k,l)=(3,3)` case from Natalie C. Behague's work on semi-perfect 1-factorizations of the hypercube.
 
+Archived release DOI: [10.5281/zenodo.19854804](https://doi.org/10.5281/zenodo.19854804)
+
 ## Main Files
 
 - `q6_k33_paper.tex`: LaTeX short-paper draft.
