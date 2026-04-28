@@ -8,6 +8,7 @@ authors:
     orcid: "https://orcid.org/0009-0006-6900-305X"
 abstract: "A constructive certificate and verification scripts for a 1-factorization of the six-dimensional hypercube Q_6 whose Hamilton-pair auxiliary graph is exactly K_{3,3}."
 repository-code: "https://github.com/dmzlxm/q6-k33-factorization"
+doi: "10.5281/zenodo.19854804"
 license: MIT
 version: "1.0.0"
 date-released: "2026-04-28"
