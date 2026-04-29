@@ -1,105 +1,121 @@
-\documentclass[11pt]{article}
+\documentclass[preprint,12pt]{elsarticle}
 
-\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{booktabs}
-\usepackage{hyperref}
 \usepackage{longtable}
+\usepackage{hyperref}
 \pdfstringdefDisableCommands{\def\corref#1{}}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 
 \newcommand{\Q}{Q_6}
-\newcommand{\F}{\mathcal F}
 \newcommand{\M}{\mathcal M}
 
-\title{The missing \texorpdfstring{\(K_{3,3}\)}{K3,3} case for semi-perfect 1-factorizations of the hypercube}
-\author{Zhu Mindong\\
-Institute of Marxism, Postdoctoral Research Station of Sociology\\
-East China University of Science and Technology\\
-130 Meilong Road, Shanghai 200237, China\\
-\texttt{13788998119@163.com}\\
-ORCID: \href{https://orcid.org/0009-0006-6900-305X}{0009-0006-6900-305X}}
-\date{April 28, 2026}
+\journal{Discrete Mathematics}
 
 \begin{document}
-\maketitle
+
+\begin{frontmatter}
+
+\title{The missing \texorpdfstring{\(K_{3,3}\)}{K3,3} case for semi-perfect 1-factorizations of the hypercube}
+
+\author[aff1]{Zhu Mindong\corref{cor1}}
+\ead{13788998119@163.com}
+\ead[url]{https://orcid.org/0009-0006-6900-305X}
+\cortext[cor1]{Corresponding author}
+
+\affiliation[aff1]{
+  organization={Institute of Marxism, Postdoctoral Research Station of Sociology, East China University of Science and Technology},
+  addressline={130 Meilong Road},
+  city={Shanghai},
+  postcode={200237},
+  country={China}
+}
 
 \begin{abstract}
 Behague proved that for all positive integers \(k,l\), except for the possible
 exception \((k,l)=(3,3)\), there is a 1-factorization \(\M\) of \(Q_{k+l}\)
-whose auxiliary graph \(G[\M]\) is isomorphic to \(K_{k,l}\).  We give an
+whose auxiliary graph \(G[\M]\) is isomorphic to \(K_{k,l}\). We give an
 explicit 1-factorization of \(Q_6\) for which \(G[\M]\cong K_{3,3}\), thereby
-settling the remaining case.  The construction is supplied as a compact
+settling the remaining case. The construction is supplied as a compact
 edge-coloring table, together with a deterministic verification procedure and
-machine-readable certificate.  The proof reduces to checking that the six
+machine-readable certificate. The proof reduces to checking that the six
 listed color classes are perfect matchings and that the pairwise cycle lengths
 have the prescribed form.
 \end{abstract}
 
+\begin{keyword}
+hypercube \sep 1-factorization \sep Hamilton cycle \sep graph factorization
+\sep combinatorial construction
+\end{keyword}
+
+\end{frontmatter}
+
 \section{Introduction}
 
-Let \(Q_d\) be the \(d\)-dimensional hypercube.  A 1-factorization of \(Q_d\)
-is a partition of \(E(Q_d)\) into \(d\) perfect matchings.  A classical theme
+Let \(Q_d\) be the \(d\)-dimensional hypercube. A 1-factorization of \(Q_d\)
+is a partition of \(E(Q_d)\) into \(d\) perfect matchings. A classical theme
 in graph factorization asks when the union of two factors is a Hamilton cycle.
 In its strongest form this leads to perfect 1-factorizations, a subject going
 back to Kotzig's work and conjectures on complete graphs
-\cite{kotzig,anderson}.  Related existence and non-existence questions have
+\cite{kotzig,anderson}. Related existence and non-existence questions have
 since been studied for complete bipartite graphs and other highly symmetric
 families; see, for example, \cite{laufer,bryant_maenhaut_wanless}.
 
 For hypercubes, the perfect condition is too restrictive, and the natural
-question becomes which pairs of factors can be made Hamiltonian.  Following
+question becomes which pairs of factors can be made Hamiltonian. Following
 Behague \cite{behague}, if
 \[
   \M=\{M_1,\dots,M_d\}
 \]
 is a 1-factorization, define \(G[\M]\) to be the graph with vertex set
 \(\M\), where \(M_iM_j\) is an edge exactly when \(M_i\cup M_j\) is a
-Hamilton cycle of \(Q_d\).  Thus \(G[\M]\) records the Hamiltonian pair
-structure of the factorization.  This language is closely related to the
+Hamilton cycle of \(Q_d\). Thus \(G[\M]\) records the Hamiltonian pair
+structure of the factorization. This language is closely related to the
 ``semi-perfect'' and \(k\)-semi-perfect factorizations studied by Gochev and
 Gotchev \cite{gochev_gotchev}, Kr\'alovi\v{c} and Kr\'alovi\v{c}
 \cite{kralovic_kralovic}, Chitra and Muthusamy \cite{chitra_muthusamy}, and
-others.  Hamilton decompositions of directed cubes and related products
-provide another source of constructions and obstructions \cite{stong}.
+others. Hamilton decompositions of directed cubes and related products provide
+another source of constructions and obstructions \cite{stong}.
 
 Behague proved that for every 1-factorization \(\M\) of a hypercube the graph
 \(G[\M]\) is bipartite, and then considered the converse realization problem:
-which bipartite graphs arise as \(G[\M]\)?  In particular, he proved that for
+which bipartite graphs arise as \(G[\M]\)? In particular, he proved that for
 all positive integers \(k,l\), not both equal to \(3\), there is a
 1-factorization \(\M\) of \(Q_{k+l}\) with \(G[\M]\cong K_{k,l}\), and asked
 whether the remaining case \(K_{3,3}\) occurs \cite[Theorem 2 and Open Problem
 8]{behague}.
 
-This note gives an explicit construction for the missing case.  The proof is
+This note gives an explicit construction for the missing case. The proof is
 entirely finite: Table~\ref{tab:coloring} specifies the factorization, and the
 cycle-length calculation displayed in the proof identifies exactly which
-pairs of factors are Hamiltonian.  The consequence is that Behague's existence
+pairs of factors are Hamiltonian. The consequence is that Behague's existence
 result for complete bipartite auxiliary graphs holds for all positive
 \(k,l\), with no exceptional pair.
 
 \section{The construction}
 
 Identify the vertices of \(\Q\) with the integers \(0,\dots,63\), or
-equivalently with the binary vectors in \(\mathbb F_2^6\).  Direction \(d\)
+equivalently with the binary vectors in \(\mathbb F_2^6\). Direction \(d\)
 means flipping bit \(d\), so the edge in direction \(d\) from \(v\) joins
-\(v\) to \(v\oplus 2^d\).  Every edge has exactly one endpoint of even parity.
+\(v\) to \(v\oplus 2^d\). Every edge has exactly one endpoint of even parity.
 
-Table~\ref{tab:coloring} gives an edge-coloring of \(\Q\).  For an even vertex
+Table~\ref{tab:coloring} gives an edge-coloring of \(\Q\). For an even vertex
 \(v\), the entry in column \(d\) is the color of the edge
-\(\{v,v\oplus 2^d\}\).  Let \(M_i\) be the set of edges of color \(i\).
+\(\{v,v\oplus 2^d\}\). Let \(M_i\) be the set of edges of color \(i\).
 
-\begin{table}[htbp]
-\centering
+\begin{longtable}{rrrrrrrr}
 \caption{The color of the edge in each direction from each even vertex.}
-\label{tab:coloring}
-\small
-\begin{tabular}{rrrrrrrr}
+\label{tab:coloring}\\
 \toprule
 \(v\) & binary & dir 0 & dir 1 & dir 2 & dir 3 & dir 4 & dir 5 \\
 \midrule
+\endfirsthead
+\toprule
+\(v\) & binary & dir 0 & dir 1 & dir 2 & dir 3 & dir 4 & dir 5 \\
+\midrule
+\endhead
 0  & 000000 & 4 & 5 & 0 & 1 & 3 & 2 \\
 3  & 000011 & 1 & 0 & 3 & 2 & 4 & 5 \\
 5  & 000101 & 2 & 0 & 1 & 5 & 4 & 3 \\
@@ -133,12 +149,11 @@ Table~\ref{tab:coloring} gives an edge-coloring of \(\Q\).  For an even vertex
 60 & 111100 & 3 & 2 & 5 & 1 & 4 & 0 \\
 63 & 111111 & 5 & 1 & 4 & 2 & 0 & 3 \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
 
 \begin{theorem}
 The color classes \(M_0,\dots,M_5\) defined by Table~\ref{tab:coloring} form
-a 1-factorization of \(Q_6\).  Moreover,
+a 1-factorization of \(Q_6\). Moreover,
 \[
   G[\M]\cong K_{3,3},
 \]
@@ -148,12 +163,12 @@ with bipartition \(\{M_0,M_1,M_5\}\cup\{M_2,M_3,M_4\}\).
 \begin{proof}
 Each row of Table~\ref{tab:coloring} is a permutation of
 \(\{0,1,2,3,4,5\}\), so each even vertex is incident with exactly one edge of
-each color.  A direct check of the table also shows that each odd vertex is
-incident with exactly one edge of each color.  Hence each \(M_i\) is a perfect
+each color. A direct check of the table also shows that each odd vertex is
+incident with exactly one edge of each color. Hence each \(M_i\) is a perfect
 matching, and the six \(M_i\)'s partition the edge set of \(Q_6\).
 
 For each unordered pair \(\{i,j\}\), the graph \(M_i\cup M_j\) is 2-regular
-on all 64 vertices, so it is a disjoint union of cycles.  The cycle lengths are
+on all 64 vertices, so it is a disjoint union of cycles. The cycle lengths are
 as follows:
 \[
 \begin{array}{c|l}
@@ -181,7 +196,7 @@ Thus \(M_i\cup M_j\) is Hamiltonian exactly for the nine pairs
   \{5,2\},\{5,3\},\{5,4\}.
 \]
 These are precisely the edges of the complete bipartite graph with parts
-\(\{0,1,5\}\) and \(\{2,3,4\}\).  Therefore \(G[\M]\cong K_{3,3}\).
+\(\{0,1,5\}\) and \(\{2,3,4\}\). Therefore \(G[\M]\cong K_{3,3}\).
 \end{proof}
 
 \begin{corollary}
@@ -190,7 +205,7 @@ For all positive integers \(k,l\), there is a 1-factorization \(\M\) of
 \end{corollary}
 
 \begin{proof}
-Behague proved this for all \((k,l)\ne(3,3)\) \cite[Theorem 2]{behague}.  The
+Behague proved this for all \((k,l)\ne(3,3)\) \cite[Theorem 2]{behague}. The
 theorem above supplies the remaining case.
 \end{proof}
 
@@ -199,101 +214,112 @@ theorem above supplies the remaining case.
 Although the construction is small enough to be checked directly from
 Table~\ref{tab:coloring}, we describe the verification procedure explicitly.
 For each color \(i\), form the map \(p_i\) sending a vertex \(v\) to the other
-endpoint of the unique color-\(i\) edge incident with \(v\).  The assertion
+endpoint of the unique color-\(i\) edge incident with \(v\). The assertion
 that \(M_i\) is a perfect matching is equivalent to saying that \(p_i\) is a
-fixed-point-free involution on the 64 vertices.  Since the table lists every
+fixed-point-free involution on the 64 vertices. Since the table lists every
 edge of \(Q_6\) exactly once, this also checks that the color classes partition
 \(E(Q_6)\).
 
 For a pair of colors \(i,j\), the graph \(M_i\cup M_j\) is then the graph
-generated by the two involutions \(p_i\) and \(p_j\).  Its connected
-components are cycles.  Starting from an unvisited vertex and alternating the
-two maps therefore gives the length of one component; repeating this until all
-vertices are visited gives the cycle-length multiset for the pair.  Since
-\(Q_6\) has 64 vertices, the pair is Hamiltonian exactly when this multiset is
-\(\{64\}\).  The displayed cycle-length table in the proof is the complete
-output of this procedure for the 15 unordered pairs of colors.
+generated by the two involutions \(p_i\) and \(p_j\). Its connected components
+are cycles. Starting from an unvisited vertex and alternating the two maps
+therefore gives the length of one component; repeating this until all vertices
+are visited gives the cycle-length multiset for the pair. Since \(Q_6\) has
+64 vertices, the pair is Hamiltonian exactly when this multiset is \(\{64\}\).
+The displayed cycle-length table in the proof is the complete output of this
+procedure for the 15 unordered pairs of colors.
 
 \section*{Verification files}
 
-The table above is self-contained.  For independent reproducibility, the
+The table above is self-contained. For independent reproducibility, the
 accompanying files are:
-\[
-\texttt{q6\_k33\_solution.json},\qquad
-\texttt{verify\_q6\_k33.py},\qquad
-\texttt{q6\_k33\_selfcheck.py}.
-\]
-The first lists the six matchings explicitly as edge sets.  The second checks
+\begin{itemize}
+\item \texttt{q6\_k33\_solution.json},
+\item \texttt{verify\_q6\_k33.py},
+\item \texttt{q6\_k33\_selfcheck.py}.
+\end{itemize}
+The first lists the six matchings explicitly as edge sets. The second checks
 that the JSON file is a 1-factorization and computes all pairwise cycle
-lengths.  The third hard-codes Table~\ref{tab:coloring} and performs the same
-check without reading any external certificate file.  Thus the certificate and
+lengths. The third hard-codes Table~\ref{tab:coloring} and performs the same
+check without reading any external certificate file. Thus the certificate and
 the compact table can be checked independently.
 
-The construction and verification files are archived on Zenodo at
-\href{https://doi.org/10.5281/zenodo.19854804}{doi:10.5281/zenodo.19854804}.
+\section*{Declaration of competing interest}
 
-\section*{Declaration of AI use}
+The author declares no known competing financial interests or personal
+relationships that could have appeared to influence the work reported in this
+paper.
+
+\section*{Funding}
+
+No funding was received for this work.
+
+\section*{Data availability}
+
+The construction and verification scripts are archived on Zenodo
+(DOI: \href{https://doi.org/10.5281/zenodo.19854804}{10.5281/zenodo.19854804})
+and are also available in
+\href{https://github.com/dmzlxm/q6-k33-factorization}{the project repository}.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
 
 OpenAI Codex/ChatGPT was used to assist with computational search, generation
-of verification scripts, and drafting/editing of the manuscript.  The author
+of verification scripts, and drafting/editing of the manuscript. The author
 checked the construction and verification output and takes full responsibility
-for the content of the paper.  This statement should be adjusted to match the
+for the content of the paper. This statement should be adjusted to match the
 target journal's required disclosure format.
 
 \begin{thebibliography}{9}
 
 \bibitem{anderson}
 B.~A. Anderson,
-\newblock Finite topologies and Hamiltonian paths,
-\newblock \emph{Journal of Combinatorial Theory, Series B} 14 (1973),
-87--93.
+Finite topologies and Hamiltonian paths,
+Journal of Combinatorial Theory, Series B 14 (1973) 87--93.
 
 \bibitem{behague}
-Natalie C. Behague,
-\newblock Semi-perfect 1-factorizations of the hypercube,
-\newblock \emph{Discrete Mathematics} 342(6) (2019), 1696--1702.
-\newblock \href{https://doi.org/10.1016/j.disc.2019.01.035}{doi:10.1016/j.disc.2019.01.035};
+N.~C. Behague,
+Semi-perfect 1-factorizations of the hypercube,
+Discrete Mathematics 342(6) (2019) 1696--1702.
+\href{https://doi.org/10.1016/j.disc.2019.01.035}{doi:10.1016/j.disc.2019.01.035};
 \href{https://arxiv.org/abs/1811.06389}{arXiv:1811.06389}.
 
 \bibitem{bryant_maenhaut_wanless}
 D.~E. Bryant, B.~Maenhaut, I.~M. Wanless,
-\newblock A family of perfect factorisations of complete bipartite graphs,
-\newblock \emph{Journal of Combinatorial Theory, Series A} 98(2) (2002),
-328--342.
+A family of perfect factorisations of complete bipartite graphs,
+Journal of Combinatorial Theory, Series A 98(2) (2002) 328--342.
 
 \bibitem{chitra_muthusamy}
 V.~Chitra, A.~Muthusamy,
-\newblock A note on semi-perfect 1-factorization and Craft's conjecture,
-\newblock \emph{Graph Theory Notes of New York} 64 (2013), 22--25.
+A note on semi-perfect 1-factorization and Craft's conjecture,
+Graph Theory Notes of New York 64 (2013) 22--25.
 
 \bibitem{gochev_gotchev}
 V.~S. Gochev, I.~S. Gotchev,
-\newblock On \(k\)-semi-perfect one-factorizations of \(Q_n\) and Craft's
-conjecture,
-\newblock \emph{Graph Theory Notes of New York} 58 (2010), 36--41.
+On \(k\)-semi-perfect one-factorizations of \(Q_n\) and Craft's conjecture,
+Graph Theory Notes of New York 58 (2010) 36--41.
 
 \bibitem{kotzig}
 A.~Kotzig,
-\newblock Hamilton graphs and Hamilton circuits,
-\newblock in: \emph{Theory of Graphs and its Applications}, Proceedings of
-the Symposium held in Smolenice in June 1963, Czechoslovak Academy of
-Sciences, Prague, 1964, pp. 63--82.
+Hamilton graphs and Hamilton circuits,
+in: Theory of Graphs and its Applications, Proceedings of the Symposium held
+in Smolenice in June 1963, Czechoslovak Academy of Sciences, Prague, 1964,
+pp. 63--82.
 
 \bibitem{kralovic_kralovic}
 R.~Kr\'alovi\v{c}, R.~Kr\'alovi\v{c},
-\newblock On semi-perfect 1-factorizations,
-\newblock in: \emph{Structural Information and Communication Complexity},
-Lecture Notes in Computer Science 3499, Springer, Berlin, 2005, pp. 216--230.
+On semi-perfect 1-factorizations,
+in: Structural Information and Communication Complexity, Lecture Notes in
+Computer Science 3499, Springer, Berlin, 2005, pp. 216--230.
 
 \bibitem{laufer}
 H.~B. Laufer,
-\newblock On strongly Hamiltonian complete bipartite graphs,
-\newblock \emph{Ars Combinatoria} 9 (1980), 43--46.
+On strongly Hamiltonian complete bipartite graphs,
+Ars Combinatoria 9 (1980) 43--46.
 
 \bibitem{stong}
 R.~Stong,
-\newblock Hamilton decompositions of directed cubes and products,
-\newblock \emph{Discrete Mathematics} 306(18) (2006), 2186--2204.
+Hamilton decompositions of directed cubes and products,
+Discrete Mathematics 306(18) (2006) 2186--2204.
 
 \end{thebibliography}
 
