@@ -3,7 +3,7 @@
 This directory contains a short-paper draft and verification files for an
 explicit 1-factorization of `Q_6` whose auxiliary graph is exactly `K_{3,3}`.
 
-Archived artifact DOI: <https://doi.org/10.5281/zenodo.19854804>
+Archived artifact DOI: <https://doi.org/10.5281/zenodo.19881180>
 
 ## Files
 
